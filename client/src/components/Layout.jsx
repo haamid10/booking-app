@@ -3,7 +3,7 @@ import {Outlet} from 'react-router-dom'
 
 const Layout = () => {
   return (
-    <div className="pb-12">
+    <div className="p-4 flex flex-col h-screen">
         <Header/>
         <Outlet/>
     </div>
