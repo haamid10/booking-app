@@ -1,13 +1,20 @@
+import cors from 'cors';
+import bodyParser from 'body-parser';
 import express from 'express';
-import bodyParser from 'body-parser'
 
-const app =  express();
+const app = express();
 
-const Port= 5000;
+app.use(cors({
+    credentials: true,
+    origin: 'http://127.0.0.1:5173'
+}));
+
+const Port = 5000;
 
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {res.send("hello we are here ");}
-)
+app.get('/test', (req, res) => {
+    res.json("hello we are here");
+});
 
 app.listen(Port, () => console.log(`server running on port: http://localhost:${Port}`));
