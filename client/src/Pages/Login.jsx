@@ -9,7 +9,7 @@ const Login = () => {
           <input type="password" placeholder="password" />
           <button className="primary">Login</button>
           <div className=" text-center py-2 text-gray-500">
-            If you don't have account yet? <Link className=" underline text-black" to={'/register'}>Register</Link>
+            If you dont have account yet? <Link className=" underline text-black" to={'/register'}>Register</Link>
           </div>
         </form>
       </div>

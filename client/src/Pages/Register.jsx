@@ -7,7 +7,11 @@ const Register = () => {
     const [password , setPassword]=useState('');
     const register = (e) => {
         e.preventDefault()
-        axios.get('http://localhost:5000/test')
+        axios.post('/register', {
+            name, 
+            email,
+            password
+        })
     }
   return (
     <div className="mt-4 flex grow items-center justify-around ">
