@@ -10,15 +10,14 @@ app.use(cors({
     origin: 'http://127.0.0.1:5173'
 }));
 
-const Port = 5000;
 
 
 app.get('/test', (req, res) => {
     res.json("hello we are here");
 });
 app.post('/register', (req,res) => {
-    const { name,email, password} =req.body;
-    res.json({name,email,password})
+    const {name,email,password} =req.body;
+    res.json({name,email,password},"added")
 });
 
-app.listen(Port, () => console.log(`server running on port: http://localhost:${Port}`));
+app.listen(5000, () => console.log(`server running on port: http://localhost:5000`));

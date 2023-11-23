@@ -11,7 +11,7 @@ const Register = () => {
             name, 
             email,
             password,
-        }).catch((err) => console.log(err.data.message))    }
+        }).catch((err) =>{ console.log("something is wrong ", err)})    }
   return (
     <div className="mt-4 flex grow items-center justify-around ">
       <div className="mb-32">
