@@ -1,33 +1,32 @@
 const  express= require('express');
+const bcrypt= require('bcrypt')
+const cors= require('cors');
+const User = require('./MODELS/user');
+require('dotenv').config();
 
 const app = express();
-const cors= require('cors');
-const dotenv= require('dotenv')
-
-
-dotenv.config({path:"./.env"});
-require('./connection')
-
-
-
-
-
+require('./connection');
 
 app.use(cors({ 
     credentials: true,
-    // origin: 'http://127.0.0.1:5173'
+    origin: 'http://localhost:5173'
 }));
 app.use(express.json());
 
 
 
+const sec=bcrypt.genSaltSync(10);
 
-// app.get('/test', (req, res) => {
-//     res.json("hello we are here");
-// });
-app.post('/register', (req,res) => {
+
+app.post('/register',async (req,res) => {
     const {name,password,email} =req.body;
-    res.json({name,password,email})
+   const userDoc= await User.create({
+        name,
+        email,
+        password:bcrypt.hashSync(password,sec),
+
+    })
+    res.json(userDoc)
     res.json("working")
 });
 
