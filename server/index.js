@@ -1,13 +1,24 @@
-const cors= require('cors');
 const  express= require('express');
 
 const app = express();
-app.use(express.json());
+const cors= require('cors');
+const dotenv= require('dotenv')
 
-app.use(cors({
+
+dotenv.config({path:"./.env"});
+require('./connection')
+
+
+
+
+
+
+app.use(cors({ 
     credentials: true,
     // origin: 'http://127.0.0.1:5173'
 }));
+app.use(express.json());
+
 
 
 
