@@ -4,13 +4,18 @@ const bcrypt= require('bcrypt')
 
 exports.register = async (req,res) => {
     const {name,password,email} =req.body;
-    const sec=bcrypt.genSaltSync(10);
-   const userDoc= await user.create({
-        name,
-        email,
-        password:bcrypt.hashSync(password,sec),
-
-    })
-    res.json(userDoc)
+    try{
+        const sec=bcrypt.genSaltSync(10);
+        const userDoc= await user.create({
+             name,
+             email,
+             password:bcrypt.hashSync(password,sec),
+     
+         })
+         res.json(userDoc)
+    }catch (e) {
+        res.status(422).json(e)
+    }
+   
     
 }

@@ -5,7 +5,6 @@ require('dotenv').config();
 const app = express();
 const userRoutes= require('./Routes/userRoutes')
 
-
 require('./connection');
 require('./MODELS/user')
 

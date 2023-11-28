@@ -5,13 +5,17 @@ const Register = () => {
     const [name , setName]=useState('');
     const [email , setEmail]=useState('');
     const [password , setPassword]=useState('');
-    const register = (e) => {
+    const register = async (e) => {
         e.preventDefault()
-        axios.post('http://localhost:5000/register', {
+        try{
+
+       await axios.post('http://localhost:5000/register', {
             name, 
             email,
             password,
-        }).catch((err) =>{ console.log("something is wrong ", err)})    }
+        })
+        alert("you can login now")}  
+        catch (e){ alert("registration is failed please try again",e)}    }
   return (
     <div className="mt-4 flex grow items-center justify-around ">
       <div className="mb-32">
