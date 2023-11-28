@@ -3,9 +3,9 @@ import Login from './Pages/Login'
 import Layout from './components/Layout'
 import IndexPage from './Pages/IndexPage'
 import Register from './Pages/Register'
-// import  axios  from 'axios'
+import  axios  from 'axios'
 
-// axios.defaults.baseURL= 'http://localhost:5000';
+axios.defaults.baseURL= 'http://localhost:5000';
 
 const App = () => {
   return (
