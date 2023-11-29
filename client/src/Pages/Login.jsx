@@ -11,7 +11,7 @@ const Login = () => {
         email,
         password,
       })
-      alert("you can login now")
+      alert("login successful")
     }
     catch (e) { alert("user or password is wrong is failed, please try again", e) }
   }
