@@ -1,5 +1,6 @@
 const user = require('../MODELS/user'); 
 const bcrypt= require('bcrypt')
+const jwt = require('jsonwebtoken');
 // Update the import statement to use lowercase 'user'
 
 exports.register = async (req,res) => {
@@ -27,9 +28,15 @@ exports.login = async (req,res) => {
         // console.log("here")
         try{
             const userDoc= await user.findOne({email})
+
             if(userDoc){
-                if(bcrypt.compareSync(password,userDoc.password)){
-                    res.json({message:"successfully signed in"})
+                const passOK = bcrypt.compareSync(password,userDoc.password);
+                if(passOK){
+                    const token = jwt.sign({_id:userDoc._id, email: userDoc.email},process.env.JWT_SECRET,{},
+                        (err,token)=> {
+                            if(err) throw err;
+                            res.cookie('token', token) .json({message:"successfully signed in"})
+                    })
                 }
                 else{
                     res.status(422).json({error:"invalid email or password"})
