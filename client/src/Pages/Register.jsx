@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import axios from "axios"
+import { Navigate } from "react-router-dom"
 const Register = () => {
     const [name , setName]=useState('');
     const [email , setEmail]=useState('');
     const [password , setPassword]=useState('');
+    const [redirect, setRedirect] = useState(false)
     const register = async (e) => {
         e.preventDefault()
         try{
@@ -14,8 +16,13 @@ const Register = () => {
             email,
             password,
         })
-        alert("you can login now")}  
-        catch (e){ alert("registration is failed please try again",e)}    }
+        alert("you can login now")
+        setRedirect(true)
+      }  
+      catch (e){ alert("registration is failed please try again",e)}    }
+    if(redirect){
+        return <Navigate to={'/login'}/>
+    } 
   return (
     <div className="mt-4 flex grow items-center justify-around ">
       <div className="mb-32">

@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import  axios  from "axios";
+import { Navigate } from "react-router-dom";
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [redirect, setRedirect] = useState(false)
   const login = async (e) => {
     e.preventDefault()
     try {
@@ -12,8 +15,14 @@ const Login = () => {
         password,
       })
       alert("login successful")
+      setRedirect(true)
     }
-    catch (e) { alert("user or password is wrong is failed, please try again", e) }
+    catch (e) { alert("user or password is wrong is failed, please try again", e) 
+  }
+  }
+  
+  if(redirect){
+    return <Navigate to={'/'}/>
   }
   return (
     <div className="mt-4 flex grow items-center justify-around ">
