@@ -4,13 +4,15 @@ import Layout from './components/Layout'
 import IndexPage from './Pages/IndexPage'
 import Register from './Pages/Register'
 import  axios  from 'axios'
+import { UserContextProvider } from './UserContext'
 
 axios.defaults.baseURL= 'http://localhost:5000';
 axios.defaults.withCredentials= true;
 
 const App = () => {
   return (
-    <>
+   
+    <UserContextProvider>
    <Routes>
       <Route path='/' element={<Layout />} >
         <Route index element={<IndexPage />} />
@@ -18,7 +20,8 @@ const App = () => {
         <Route path='/register' element={<Register/>} />
       </Route>
    </Routes>
-   </>
+   </UserContextProvider>
+   
   )
 }
 export default App

@@ -35,7 +35,7 @@ exports.login = async (req,res) => {
                     const token = jwt.sign({_id:userDoc._id, email: userDoc.email},process.env.JWT_SECRET,{},
                         (err,token)=> {
                             if(err) throw err;
-                            res.cookie('token', token) .json({message:"successfully signed in"})
+                            res.cookie('token', token) .json(userDoc)
                     })
                 }
                 else{
