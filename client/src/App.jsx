@@ -5,11 +5,17 @@ import IndexPage from './Pages/IndexPage'
 import Register from './Pages/Register'
 import  axios  from 'axios'
 import { UserContextProvider } from './UserContext'
+import { useEffect } from 'react'
 
 axios.defaults.baseURL= 'http://localhost:5000';
 axios.defaults.withCredentials= true;
 
 const App = () => {
+  useEffect(()=> {
+    if(!user){
+        axios.get('/profile')
+    }
+},[])
   return (
    
     <UserContextProvider>

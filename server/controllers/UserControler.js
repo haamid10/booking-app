@@ -51,4 +51,7 @@ exports.login = async (req,res) => {
         }
     }
 }
-   
+
+exports.profile = async (req,res) => {
+    rs.json("user info")
+}
