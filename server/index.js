@@ -15,6 +15,10 @@ app.use(cors({
 app.use(express.json());
 app.use('/', userRoutes)
 
+// app.get('/profile' ,(req,res)=> {
+//     res.json('user info')
+// })
+
 
 
 
