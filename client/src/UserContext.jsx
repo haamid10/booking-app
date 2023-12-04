@@ -11,7 +11,7 @@ export function UserContextProvider({children}) {
         if(!user){
             axios.get('/profile')
         }
-    },[])
+    }, [ ])
     return (
         <UserContext.Provider value={{user, setUser}}>
         {children}

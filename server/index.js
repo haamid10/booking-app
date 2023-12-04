@@ -1,8 +1,9 @@
 const  express= require('express');
 const cors= require('cors');
 require('dotenv').config();
-
+const cookieParser = require('cookie-parser')
 const app = express();
+const jwt = require('jsonwebtoken');
 const userRoutes= require('./Routes/userRoutes')
 
 require('./connection');
@@ -13,11 +14,25 @@ app.use(cors({
     origin: 'http://localhost:5173'
 }));
 app.use(express.json());
+app.use(cookieParser());
 app.use('/', userRoutes)
 
-// app.get('/profile' ,(req,res)=> {
-//     res.json('user info')
-// })
+app.get('/profile' ,(req,res)=> {
+    // const {token} = req.cookies;
+    // res.json({token})
+
+    const {token} = req.cookies;
+   
+    if(token){
+        jwt.verify(token, process.env.JWT_SECRET, {}, (err, user)=> {
+            if (err) throw err;
+            res.json(user)
+        })
+    }
+ else {
+    res.json( null)
+}
+})
 
 
 
