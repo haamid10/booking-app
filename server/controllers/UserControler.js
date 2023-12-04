@@ -1,6 +1,7 @@
 const user = require('../MODELS/user'); 
 const bcrypt= require('bcrypt')
 const jwt = require('jsonwebtoken');
+
 // Update the import statement to use lowercase 'user'
 
 exports.register = async (req,res) => {
@@ -52,17 +53,17 @@ exports.login = async (req,res) => {
     }
 }
 
-exports.profile =  (req,res) => {
-    const {token} = req.cookies;
+// exports.profile =  (req,res) => {
+//     const {token} = req.cookies;
    
-        if(token){
-            jwt.verify(token, process.env.JWT_SECRET, {}, (err, user)=> {
-                if (err) throw err;
-                res.json(user)
-            })
-        }
-     else {
-        res.json( null)
-    }
+//         if(token){
+//             jwt.verify(token, process.env.JWT_SECRET, {}, (err, user)=> {
+//                 if (err) throw err;
+//                 res.json(user)
+//             })
+//         }
+//      else {
+//         res.json( null)
+//     }
     
-}
+// }

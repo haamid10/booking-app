@@ -4,8 +4,8 @@ require('dotenv').config();
 const cookieParser = require('cookie-parser')
 const app = express();
 const jwt = require('jsonwebtoken');
-const userRoutes= require('./Routes/userRoutes')
-
+const userRoutes= require('./Routes/userRoutes');
+const user = require('./MODELS/user')
 require('./connection');
 require('./MODELS/user')
 
@@ -17,20 +17,21 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/', userRoutes)
 
-app.get('/profile' ,(req,res)=> {
+app.get('/profile' , (req,res)=> {
     // const {token} = req.cookies;
     // res.json({token})
 
     const {token} = req.cookies;
    
     if(token){
-        jwt.verify(token, process.env.JWT_SECRET, {}, (err, user)=> {
+        jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData)=> {
             if (err) throw err;
-            res.json(user)
+            const {name , email ,_id} = await user.findById(userData.id);
+            res.json(name, email, _id);
         })
     }
- else {
-    res.json( null)
+    else {
+        res.json( null)
 }
 })
 
