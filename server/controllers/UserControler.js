@@ -33,7 +33,7 @@ exports.login = async (req,res) => {
             if(userDoc){
                 const passOK = bcrypt.compareSync(password,userDoc.password);
                 if(passOK){
-                    const token = jwt.sign({_id:userDoc._id, email: userDoc.email},process.env.JWT_SECRET,{},
+                    const token = jwt.sign({_id:userDoc._id, email: userDoc.email, name : userDoc.name},process.env.JWT_SECRET,{},
                         (err,token)=> {
                             if(err) throw err;
                             res.cookie('token', token) .json(userDoc)
@@ -53,17 +53,21 @@ exports.login = async (req,res) => {
     }
 }
 
-// exports.profile =  (req,res) => {
+// exports.profile = async (req,res) => {
+
 //     const {token} = req.cookies;
    
-//         if(token){
-//             jwt.verify(token, process.env.JWT_SECRET, {}, (err, user)=> {
-//                 if (err) throw err;
-//                 res.json(user)
-//             })
-//         }
-//      else {
-//         res.json( null)
+//     if(token){
+//         jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData)=> {
+//             if (err) throw err;
+//             const userDoc = await user.findById(userData.id);
+//             res.json(userDoc);
+//         })
 //     }
+//     else {
+//         res.json( null)
+
     
+
+//     }
 // }

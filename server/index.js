@@ -26,8 +26,7 @@ app.get('/profile' , (req,res)=> {
     if(token){
         jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData)=> {
             if (err) throw err;
-            const {name , email ,_id} = await user.findById(userData.id);
-            res.json(name, email, _id);
+            res.json(userData);
         })
     }
     else {
