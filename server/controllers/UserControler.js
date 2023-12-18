@@ -71,3 +71,7 @@ exports.login = async (req,res) => {
 
 //     }
 // }
+
+exports.logOut = async (req,res) => {
+    res.clearCookie('token').json({message:"Logged out"})
+}
