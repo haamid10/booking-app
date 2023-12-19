@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom"
+import { Link,useParams } from "react-router-dom"
 const PlacesPage = () => {
+  const {action} = useParams()
+  console.log(action)
   return (
     <div>
         <div className="text-center">
