@@ -5,9 +5,11 @@ const cookieParser = require('cookie-parser')
 const app = express();
 const jwt = require('jsonwebtoken');
 const userRoutes= require('./Routes/userRoutes');
+const placeRoutes= require('./Routes/PlacesRoutes')
 const user = require('./MODELS/user')
 require('./connection');
 require('./MODELS/user')
+require('./MODELS/places')
 
 app.use(cors({ 
     credentials: true,
@@ -16,6 +18,7 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 app.use('/', userRoutes)
+app.use('/', placeRoutes)
 
 app.get('/profile' , (req,res)=> {
     // const {token} = req.cookies;

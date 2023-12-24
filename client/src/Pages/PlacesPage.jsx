@@ -1,5 +1,6 @@
 import { Link,useParams } from "react-router-dom";
 import Perks from "./Perks";
+import axios from "axios"
 import { useState } from "react";
 const PlacesPage = () => {
   const {action} = useParams()
@@ -36,6 +37,9 @@ const PlacesPage = () => {
     )
   }
 
+const addPhotoByLink = async() => {
+ await axios.post('/upload-bu=y-link',{link: photoLink})
+}
   return (
     <div className=" w-fixed">
     {action !=='new' && (
@@ -74,7 +78,7 @@ const PlacesPage = () => {
           </div>
           {headersInput('Description','description of the place')}
           <textarea  value={description} onChange={ev=> setDescription(ev.target.value)} name="" id=""  />
-          <Perks salected={Perks} onChange={setPerks} />
+          <Perks selected={perks} onChange={setPerks} />
           
           {headersInput('Extra Info','house rules and etc')}
           <textarea  value={extraInfo} onChange={ev=> setExtraInfo(ev.target.value)} name="" id=""  />
