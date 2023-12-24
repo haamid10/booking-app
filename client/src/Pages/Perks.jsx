@@ -1,5 +1,5 @@
 
-const Perks = () => {
+const Perks = ({salected, onChange}) => {
   return (
     <div>  <h2 className="text-xl mt-4">perks</h2>
     <p className="text-gray-500 mt-4"> select all the perks of the place</p>

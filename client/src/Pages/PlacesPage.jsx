@@ -1,19 +1,19 @@
 import { Link,useParams } from "react-router-dom";
 import Perks from "./Perks";
-// import { useState } from "react";
+import { useState } from "react";
 const PlacesPage = () => {
   const {action} = useParams()
 
-  // const [title, setTitle] = useState('');
-  // const [address, setAddress] = useState('');
-  // const [addedPhotos, setAddedPhotos] = useState([]);
-  // const [photoLink, setPhotoLink] = useState('');
-  // const [description, setDescription] = useState('');
-  // const [perks, setPerks] = useState([]);
-  // const [extraInfo, setExtraInfo] = useState('');
-  // const [checkIn, setCheckIn] = useState('');
-  // const [checkOut, setMheckOut] = useState('');
-  // const [maxGuests, setMaxGuests] = useState(1);
+  const [title, setTitle] = useState('');
+  const [address, setAddress] = useState('');
+  const [addedPhotos, setAddedPhotos] = useState([]);
+  const [photoLink, setPhotoLink] = useState('');
+  const [description, setDescription] = useState('');
+  const [perks, setPerks] = useState([]);
+  const [extraInfo, setExtraInfo] = useState('');
+  const [checkIn, setCheckIn] = useState('');
+  const [checkOut, setMheckOut] = useState('');
+  const [maxGuests, setMaxGuests] = useState(1);
 
 
   const titleDeclaration = (text) =>{
@@ -55,12 +55,12 @@ const PlacesPage = () => {
         <h3 className='text-center font-bold text-2xl font-sans'>Add a new place:</h3>
         <form action="">
           {headersInput('Title','Title for your place')}
-          <input type="text" placeholder="Title" className=" p-4 my-4 border border-gray-400 rounded-lg " />
+          <input value={title} onChange={ev=> setTitle(ev.target.value)} type="text" placeholder="Title" className=" p-4 my-4 border border-gray-400 rounded-lg " />
           {headersInput('Address',' Address to this place')}
-          <input type="text" placeholder="Address" className=" p-4 my-4 border border-gray-400 rounded-lg  " />
+          <input  value={address} onChange={ev=> setAddress(ev.target.value)} type="text" placeholder="Address" className=" p-4 my-4 border border-gray-400 rounded-lg  " />
           {headersInput('Photos','more = photos')}
           <div className="flex">
-            <input type="text" placeholder={'ADD using Link ....jpg'} />
+            <input  value={photoLink} onChange={ev=> setPhotoLink(ev.target.value)} type="text" placeholder={'ADD using Link ....jpg'} />
             <button className=" bg-gray-200 px-4 rounded-2xl">Add&nbsp;photo</button>
           </div>
           <div className="mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
@@ -74,7 +74,7 @@ const PlacesPage = () => {
           </div>
           {headersInput('Description','description of the place')}
           <textarea name="" id=""  />
-          <Perks/>
+          <Perks salected={Perks} onChange={setPerks} />
           
           {headersInput('Extra Info','house rules and etc')}
           <textarea name="" id=""  />
