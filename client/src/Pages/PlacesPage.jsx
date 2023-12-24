@@ -12,7 +12,7 @@ const PlacesPage = () => {
   const [perks, setPerks] = useState([]);
   const [extraInfo, setExtraInfo] = useState('');
   const [checkIn, setCheckIn] = useState('');
-  const [checkOut, setMheckOut] = useState('');
+  const [checkOut, setCheckOut] = useState('');
   const [maxGuests, setMaxGuests] = useState(1);
 
 
@@ -73,24 +73,24 @@ const PlacesPage = () => {
           
           </div>
           {headersInput('Description','description of the place')}
-          <textarea name="" id=""  />
+          <textarea  value={description} onChange={ev=> setDescription(ev.target.value)} name="" id=""  />
           <Perks salected={Perks} onChange={setPerks} />
           
           {headersInput('Extra Info','house rules and etc')}
-          <textarea name="" id=""  />
+          <textarea  value={extraInfo} onChange={ev=> setExtraInfo(ev.target.value)} name="" id=""  />
           {headersInput('Check in&out','add check in and out times , remember to have some time window for cleaning between guests')}
          <div className="grid gap-2 sm:grid-cols-3">
           <div>
             <h3 className=" mt-2 -mb-2 ">check in time</h3>
-            <input type="text" placeholder="14:00" />
+            <input value={checkIn} onChange={ev => setCheckIn(ev.target.value)} type="text" placeholder="14" />
           </div>
           <div>
             <h3 className=" mt-2 -mb-2 ">check in time</h3>
-            <input type="text" placeholder="" />
+            <input value={checkOut} onChange={ev => setCheckOut(ev.target.value)} type="text" placeholder="11" />
           </div>
           <div>
             <h3 className=" mt-2 -mb-2 ">Max number of guests</h3>
-            <input type="text" placeholder="" />
+            <input value={maxGuests} onChange={ev => setMaxGuests(ev.target.value)} type="number" placeholder="" />
           </div>
          </div>
          <button className="primary my-4">Save</button>
