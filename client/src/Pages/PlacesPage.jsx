@@ -7,7 +7,7 @@ const PlacesPage = () => {
 
   const [title, setTitle] = useState('');
   const [address, setAddress] = useState('');
-  const [addedPhotos, setAddedPhotos] = useState([]);
+  // const [addedPhotos, setAddedPhotos] = useState([]);
   const [photoLink, setPhotoLink] = useState('');
   const [description, setDescription] = useState('');
   const [perks, setPerks] = useState([]);
@@ -37,8 +37,9 @@ const PlacesPage = () => {
     )
   }
 
-const addPhotoByLink = async() => {
- await axios.post('/upload-bu=y-link',{link: photoLink})
+ async function addPhotoByLink (ev)  {
+  ev.preventDefault()
+ await axios.post('/upload-by-link',{link: photoLink})
 }
   return (
     <div className=" w-fixed">
@@ -65,7 +66,7 @@ const addPhotoByLink = async() => {
           {headersInput('Photos','more = photos')}
           <div className="flex">
             <input  value={photoLink} onChange={ev=> setPhotoLink(ev.target.value)} type="text" placeholder={'ADD using Link ....jpg'} />
-            <button className=" bg-gray-200 px-4 rounded-2xl">Add&nbsp;photo</button>
+            <button className=" bg-gray-200 px-4 rounded-2xl" onClick={addPhotoByLink}>Add&nbsp;photo</button>
           </div>
           <div className="mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           <button className="flex gap-1  border bg-transparent rounded-2xl p-4 text-md " >
