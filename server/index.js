@@ -2,13 +2,12 @@ const  express= require('express');
 const cors= require('cors');
 require('dotenv').config();
 const cookieParser = require('cookie-parser')
+const imageDownloader= require('image-downloader')
+
 const app = express();
-// const image = require('./')
 const jwt = require('jsonwebtoken');
 const userRoutes= require('./Routes/userRoutes');
 // const placeRoutes= require('./Routes/PlacesRoutes')
-const imageDownloader= require('image-downloader')
-const user = require('./MODELS/user')
 require('./connection');
 require('./MODELS/user')
 require('./MODELS/places')
@@ -39,15 +38,15 @@ app.get('/profile' , (req,res)=> {
 }
 })
 
-
+console.log({__dirname})
 app.post('/upload-by-link' , async (req,res) => {
     const {link} = req.body;
     const newName= Date.now() + '.jpg'
     await imageDownloader.image({
         url: link,
-        dest: __dirname +'./uploads/',
+        dest: __dirname+ '\\uploads\\',
     });
-    res.json(__dirname + './uploads/'+newName);
+    res.json(__dirname+ '\\uploads\\'+newName);
 })
 
 
