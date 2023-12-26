@@ -38,7 +38,7 @@ app.get('/profile' , (req,res)=> {
 }
 })
 
-console.log({__dirname})
+// console.log({__dirname})
 app.post('/upload-by-link' , async (req,res) => {
     const {link} = req.body;
     const newName= Date.now() + '.jpg'
@@ -46,23 +46,12 @@ app.post('/upload-by-link' , async (req,res) => {
         url: link,
         dest: __dirname+ '\\uploads\\',
     });
-    res.json(__dirname+ '\\uploads\\'+newName);
+    res.json(newName);
 })
 
 
 
 
 
-// app.post('/register',async (req,res) => {
-//     const {name,password,email} =req.body;
-//    const userDoc= await User.create({
-//         name,
-//         email,
-//         password:bcrypt.hashSync(password,sec),
-
-//     })
-//     res.json(userDoc)
-//     res.json("working")
-// });
 
 app.listen(5000, () => console.log(`server running on port: http://localhost:5000`));
