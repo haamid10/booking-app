@@ -7,7 +7,7 @@ const PlacesPage = () => {
 
   const [title, setTitle] = useState('');
   const [address, setAddress] = useState('');
-  // const [addedPhotos, setAddedPhotos] = useState([]);
+  const [addedPhotos, setAddedPhotos] = useState([]);
   const [photoLink, setPhotoLink] = useState('');
   const [description, setDescription] = useState('');
   const [perks, setPerks] = useState([]);
@@ -39,7 +39,11 @@ const PlacesPage = () => {
 
  async function addPhotoByLink (ev)  {
   ev.preventDefault()
- await axios.post('/upload-by-link',{link: photoLink})
+ const {data:filename}=await axios.post('/upload-by-link',{link: photoLink});
+ setAddedPhotos(prev => {
+  return[...prev,filename]
+ })
+ setAddedPhotos('')
 }
   return (
     <div className=" w-fixed">
@@ -69,7 +73,13 @@ const PlacesPage = () => {
             <button className=" bg-gray-200 px-4 rounded-2xl" onClick={addPhotoByLink}>Add&nbsp;photo</button>
           </div>
           <div className="mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          {addedPhotos.length > 0 && addedPhotos.map? 'is loading' : (link => {
+           
+               <div>{link} </div>
+               
+            })}
           <button className="flex gap-1  border bg-transparent rounded-2xl p-4 text-md " >
+          
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" dataSlot="icon" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9.75v6.75m0 0-3-3m3 3 3-3m-8.25 6a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
           </svg>

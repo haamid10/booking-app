@@ -41,7 +41,7 @@ app.get('/profile' , (req,res)=> {
 // console.log({__dirname})
 app.post('/upload-by-link' , async (req,res) => {
     const {link} = req.body;
-    const newName= Date.now() + '.jpg'
+    const newName= 'photo'+ Date.now() + '.jpg'
     await imageDownloader.image({
         url: link,
         dest: __dirname+ '\\uploads\\',
