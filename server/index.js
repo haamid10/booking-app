@@ -12,12 +12,15 @@ require('./connection');
 require('./MODELS/user')
 require('./MODELS/places')
 
+
+app.use(express.json());
+app.use(cookieParser());
+app.use('/uploads',express.static(__dirname+'\\uploads'))
+console.log({__dirname})
 app.use(cors({ 
     credentials: true,
     origin: 'http://localhost:5173'
 }));
-app.use(express.json());
-app.use(cookieParser());
 app.use('/', userRoutes)
 // app.use('/', placeRoutes)
 
