@@ -74,10 +74,12 @@ const PlacesPage = () => {
           </div>
           <div className="mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {addedPhotos.length > 0 && addedPhotos.map( (link, index) => (
-            <div key={index}>
-              <img src={'http://localhost:5000/uploads/'+ link} alt="" />
+            <div key={index} >
+              <img src={`http://localhost:5000/uploads/${link}`} alt="" />
+              <p>{link}</p>
             </div>
           ))}
+          
           <button className="flex gap-1  border bg-transparent rounded-2xl p-4 text-md " >
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" dataSlot="icon" className="w-6 h-6">
