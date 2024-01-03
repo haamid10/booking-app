@@ -15,7 +15,7 @@ require('./MODELS/places')
 // const uploadsDirectory = path.join(__dirname +'/uploads');
 app.use(express.json());
 app.use(cookieParser());
-app.use('/uploads',express.static(__dirname+'/uploads'));
+app.use('/uploads',express.static(__dirname+'\\uploads'));
 // console.log({__dirname,'\\uploads'})
 
 app.use(cors({ 
@@ -48,7 +48,7 @@ app.post('/upload-by-link' , async (req,res) => {
     const newName= 'photo'+ Date.now() + '.jpg'
     await imageDownloader.image({
         url: link,
-        dest: __dirname+ '\\uploads',
+        dest: __dirname+ '\\uploads'+ newName,
     });
     res.json(newName);
 })
