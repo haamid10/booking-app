@@ -75,7 +75,8 @@ const PlacesPage = () => {
           <div className="mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {addedPhotos.length > 0 && addedPhotos.map( (link, index) => (
             <div key={index} >
-              <img className=" rounded-xl" src={'http://localhost:5000/uploads/'+ link} alt="" />
+              <img className="rounded-2xl mr-2" src={'http://localhost:5000/uploads/'+ link} alt="" />
+              {/* <p>{link}</p>, */}
             </div>
           ))}
           
@@ -95,7 +96,7 @@ const PlacesPage = () => {
           {headersInput('Extra Info','house rules and etc')}
           <textarea  value={extraInfo} onChange={ev=> setExtraInfo(ev.target.value)} name="" id=""  />
           {headersInput('Check in&out','add check in and out times , remember to have some time window for cleaning between guests')}
-        <div className="grid gap-2 sm:grid-cols-3">
+         <div className="grid gap-2 sm:grid-cols-3">
           <div>
             <h3 className=" mt-2 -mb-2 ">check in time</h3>
             <input value={checkIn} onChange={ev => setCheckIn(ev.target.value)} type="text" placeholder="14" />
@@ -108,15 +109,15 @@ const PlacesPage = () => {
             <h3 className=" mt-2 -mb-2 ">Max number of guests</h3>
             <input value={maxGuests} onChange={ev => setMaxGuests(ev.target.value)} type="number" placeholder="" />
           </div>
-        </div>
-        <button className="primary my-4">Save</button>
+         </div>
+         <button className="primary my-4">Save</button>
 
         </form>
       </div>
-    )}
+     )}
   </div>
         
-    
+       
   )
 }
 
