@@ -76,7 +76,6 @@ const PlacesPage = () => {
           {addedPhotos.length > 0 && addedPhotos.map( (link, index) => (
             <div key={index} >
               <img src={'http://localhost:5000/uploads/'+ link} alt="" />
-              <p>{link}</p>
             </div>
           ))}
           
