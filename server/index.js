@@ -6,6 +6,7 @@ const imageDownloader= require('image-downloader')
 const app = express();
 const jwt = require('jsonwebtoken');
 const userRoutes= require('./Routes/userRoutes');
+const multer = require('multer')
 // const path= require('path')
 // const placeRoutes= require('./Routes/PlacesRoutes')
 require('./connection');
@@ -52,8 +53,12 @@ app.post('/upload-by-link' , async (req,res) => {
     });
     res.json(newName);
 })
-
-
+const photosMIddleware = multer({dest: 'uploads'})
+app.post('/upload',photosMIddleware.array('photos',100),(req,res)=>{
+    console.log(req.files)
+    res.json(req.files)
+    
+})
 
 
 

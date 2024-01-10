@@ -54,7 +54,7 @@ const uploudPhoto = (ev) => {
   axios.post('/upload', data, {
     headers: {
       'Content-Type': 'multipart/form-data'
-    }
+    } 
   }).then(res => {
     const {data: filename} = res;
     setAddedPhotos(prev => {
