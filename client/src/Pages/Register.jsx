@@ -24,10 +24,10 @@ const Register = () => {
         return <Navigate to={'/login'}/>
     } 
   return (
-    <div className="mt-4 flex grow items-center justify-around ">
+    <div className="mt-4 flex  p-12 grow items-center justify-around ">
       <div className="mb-32">
         <h1 className="text-4xl text-center mb-4">Register</h1>
-        <form action="" className=" max-w-md mx-auto" onSubmit={register}>
+        <form action="" className="flex-col bg-gray-400 max-w-md mx-auto" onSubmit={register}>
            <input type="text" placeholder="John Doe" 
                 value={name} 
                 onChange={e=> setName(e.target.value)} /> 
