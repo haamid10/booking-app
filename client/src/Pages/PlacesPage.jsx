@@ -47,23 +47,20 @@ const PlacesPage = () => {
 }
 async function uploadPhoto  (ev) {
   const files = ev.target.files;
-  console.log({files})
 
   const data=  new FormData();
   for(let i = 0 ;i < files.length; i++){
     data.append('photos', files[i]);
   }
-  // data.set('photos', files);
   axios.post('/upload', data, {
     headers: {
       'Content-type': 'multipart/form-data'
     } 
   }).then(res => {
-    const {data: filename} = res;
+    const {data: filenames} = res;
     setAddedPhotos(prev => {
-      return[...prev,filename]
+      return[...prev,...filenames]
      })
-    console.log(data);
   }).catch(err => console.log(err))
   
   
