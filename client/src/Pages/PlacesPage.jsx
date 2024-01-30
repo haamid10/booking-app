@@ -1,6 +1,6 @@
-import { Link,useParams } from "react-router-dom";
+import { Link,useParams,Navigate } from "react-router-dom";
 import Perks from "./Perks";
-// import axios from "axios"
+import axios from "axios"
 import { useState } from "react";
 import PhotosUploader from "../PhotosUploader";
 const PlacesPage = () => {
@@ -15,6 +15,7 @@ const PlacesPage = () => {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [maxGuests, setMaxGuests] = useState(1);
+  const [redirect, setRedirect] = useState(false);
 
 
   const titleDeclaration = (text) =>{
@@ -36,8 +37,25 @@ const PlacesPage = () => {
       </>
     )
   }
-
-
+const addNewPlace = async(ev) => {
+  ev.preventDefault();
+  const data = {
+    title,
+    address,
+    photos: addedPhotos,
+    description,
+    perks,
+    extraInfo,
+    checkIn,
+    checkOut,
+    maxGuests
+  }
+  await axios.post('/places', data)
+  setRedirect('/account/Places')
+}
+if(redirect) {
+  return <Navigate to={redirect}/>
+}
   return (
     <div className=" w-fixed">
     {action !=='new' && (
@@ -56,7 +74,7 @@ const PlacesPage = () => {
      {action === 'new' && (
       <div className="0 ">
         <h3 className='text-center font-bold text-2xl font-sans'>Add a new place:</h3>
-        <form action="">
+        <form action="" onSubmit={addNewPlace}>
           {headersInput('Title','Title for your place')}
           <input value={title} onChange={ev=> setTitle(ev.target.value)} type="text" placeholder="Title" className=" p-4 my-4 border border-gray-400 rounded-lg " />
           {headersInput('Address',' Address to this place')}
