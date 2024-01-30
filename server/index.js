@@ -27,22 +27,6 @@ app.use(cors({
 app.use('/', userRoutes)
 // app.use('/', placeRoutes)
 
-app.get('/profile' , (req,res)=> {
-    // const {token} = req.cookies;
-    // res.json({token})
-
-    const {token} = req.cookies;
-   
-    if(token){
-        jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData)=> {
-            if (err) throw err;
-            res.json(userData);
-        })
-    }
-    else {
-        res.json( null)
-}
-})
 
 // console.log({__dirname})
 app.post('/upload-by-link' , async (req,res) => {

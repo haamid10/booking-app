@@ -53,24 +53,23 @@ exports.login = async (req,res) => {
     }
 }
 
-// exports.profile = async (req,res) => {
-
-//     const {token} = req.cookies;
-   
-//     if(token){
-//         jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData)=> {
-//             if (err) throw err;
-//             const userDoc = await user.findById(userData.id);
-//             res.json(userDoc);
-//         })
-//     }
-//     else {
-//         res.json( null)
-
+exports.profile = (req, res) => {
     
+   
 
-//     }
-// }
+        const {token} = req.cookies;
+       
+        if(token){
+            jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData)=> {
+                if (err) throw err;
+                res.json(userData);
+            })
+        }
+        else {
+            res.json( null)
+    }
+   
+}
 
 exports.logOut = async (req,res) => {
     res.clearCookie('token').json({message:"Logged out"})
