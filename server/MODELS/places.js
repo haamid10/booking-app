@@ -13,6 +13,11 @@ const placesSchema = new mongoose.Schema({
     maxGuests: Number,
 })
 
-const PlaceModel = mongoose.model('Place', placesSchema);
+const PlaceModel = mongoose.model('place', placesSchema);
+
+if (mongoose.connection.models['Places']) {
+    delete mongoose.connection.models['Places'];
+  }
+  
 
 module.exports = PlaceModel;

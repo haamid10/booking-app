@@ -9,7 +9,7 @@ const userRoutes= require('./Routes/userRoutes');
 const multer = require('multer')
 const fs = require('fs')
 // const path= require('path')
-// const placeRoutes= require('./Routes/PlacesRoutes')
+const placeRoutes= require('./Routes/PlacesRoutes')
 require('./connection');
 require('./MODELS/user')
 require('./MODELS/places')
@@ -25,7 +25,7 @@ app.use(cors({
     origin: 'http://localhost:5173'
 }));
 app.use('/', userRoutes)
-// app.use('/', placeRoutes)
+app.use('/', placeRoutes)
 
 
 // console.log({__dirname})

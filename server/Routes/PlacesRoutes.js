@@ -4,7 +4,6 @@ const placesController = require('../controllers/placeController');
 
 
 router
-.post('/upload-by-link', placesController.uploadByLink)
-.post('/upload' , placesController.Upload);
+.post('/places' , placesController.AddPlaces);
 
 module.exports= router;
