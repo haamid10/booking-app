@@ -4,6 +4,15 @@ import PlacesFormPage from "./PlacesFormPage";
 const PlacesPage = () => {
   const {action} = useParams()
 
+  const linkClasses =(type =null)=> {
+    let baseClasses = 'inline-flex gap-2 py-2 px-6 ';
+    if(type === undefined){
+      baseClasses += ' bg-primary text-white rounded-full';
+      
+    }
+    return baseClasses;
+  }
+
   return (
     <div className=" w-fixed">
     {action !=='new' && (

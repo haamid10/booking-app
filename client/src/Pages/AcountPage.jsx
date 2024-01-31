@@ -3,6 +3,7 @@ import { UserContext } from './../UserContext';
 import {  Navigate, useParams } from 'react-router-dom';
 import  axios from 'axios';
 import PlacesPage from './PlacesPage';
+import AcountNav from '../AcountNav';
 
 const AcountPage = () => {
   const [redirect , setRedirect] = useState(null)
@@ -19,7 +20,7 @@ const AcountPage = () => {
     setUser(null)
     setRedirect('/')
   }
-  if(redirect){
+  if(redirect ){
     return<Navigate to={redirect} />;
    }
 
@@ -30,18 +31,10 @@ const AcountPage = () => {
     if(ready && !user) return <Navigate to='/login' />
       
    
-    //  const linkClasses =(type =null)=> {
-    //     let baseClasses = 'inline-flex gap-2 py-2 px-6 ';
-    //     if(type === subpage){
-    //       baseClasses += ' bg-primary text-white rounded-full';
-          
-    //     }
-    //     return baseClasses;
-    //  }
-     
+  
     return (
     <div>
-      
+      <AcountNav />
       {subpage === 'profile' && (
         <div className=' text-center max-w-lg mx-auto'>
           Logged in as {user.name}({user.email}) <br/>

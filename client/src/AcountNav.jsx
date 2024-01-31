@@ -1,7 +1,12 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation} from 'react-router-dom';
 
 const AcountNav = () => {
- let{subpage} = useParams();
+    const {pathname} = useLocation();
+    let subpage = pathname.split('/')?.[2];
+    if(subpage === undefined){
+        subpage = `profile`;
+    }
+
     const linkClasses =(type =null)=> {
         let baseClasses = 'inline-flex gap-2 py-2 px-6 ';
         if(type === subpage){
