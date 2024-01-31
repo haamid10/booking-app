@@ -8,11 +8,12 @@ const jwt = require('jsonwebtoken');
 const userRoutes= require('./Routes/userRoutes');
 const multer = require('multer')
 const fs = require('fs')
+// const placeRoutes= require('./Routes/PlacesRoutes')
+const Places = require('./MODELS/places')
+
 // const path= require('path')
-const placeRoutes= require('./Routes/PlacesRoutes')
 require('./connection');
 require('./MODELS/user')
-require('./MODELS/places')
 
 // const uploadsDirectory = path.join(__dirname +'/uploads');
 app.use(express.json());
@@ -25,7 +26,7 @@ app.use(cors({
     origin: 'http://localhost:5173'
 }));
 app.use('/', userRoutes)
-app.use('/', placeRoutes)
+// app.use('/', placeRoutes)
 
 
 // console.log({__dirname})
@@ -55,6 +56,23 @@ app.post('/upload',photosMIddleware.array('photos',100),(req,res)=>{
     
 })
 
+app.post('/uploads', (req, res) => {
+    const{token} = req.cookies;
+    const{ 
+            title , address,  description,
+            photos, perks, extraInfo, checkIn,
+            checkOut, maxGuests 
+        } = req.body;
+    jwt.verify(token ,  process.env.JWT_SECRET, {}, async (err, userData) => {
+    if(err) throw err;
+    const placeDoc=await Places.create({
+            owner:userData.id,
+            title,address,description,photos,perks,extraInfo,checkIn,checkOut,maxGuests
+        });
+        res.json(placeDoc);
+    });
+    }
+     )
 
 
 

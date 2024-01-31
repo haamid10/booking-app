@@ -1,5 +1,6 @@
 
 const Places = require('../MODELS/places');
+// const mongoose = require('mongoose');   
 // const hotels = require('../MODELS/hot')
 const jwt = require('jsonwebtoken');
 
