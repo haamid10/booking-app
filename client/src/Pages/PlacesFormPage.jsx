@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+// import { Navigate } from 'react-router-dom';
 import Perks from './Perks';
 import PhotosUploader from '../PhotosUploader';
 import { useState } from 'react';
