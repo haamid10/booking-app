@@ -3,6 +3,7 @@ import Perks from './Perks';
 import PhotosUploader from '../PhotosUploader';
 import { useState } from 'react';
 import axios from 'axios'
+import AcountNav from '../AcountNav';
 const PlacesFormPage = () => {
     const [title, setTitle] = useState('');
     const [address, setAddress] = useState('');
@@ -56,6 +57,7 @@ const addNewPlace = async(ev) => {
     
   return (
     <div>
+      <AcountNav/>
         <div className="0 ">
         <h3 className='text-center font-bold text-2xl font-sans'>Add a new place:</h3>
         <form action="" onSubmit={addNewPlace}>
