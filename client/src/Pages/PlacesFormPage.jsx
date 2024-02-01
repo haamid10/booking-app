@@ -1,7 +1,7 @@
 // import { Navigate } from 'react-router-dom';
 import Perks from './Perks';
 import PhotosUploader from '../PhotosUploader';
-import Navigate from 'react-router-dom'
+import {Navigate} from 'react-router-dom'
 import { useState } from 'react';
 import axios from 'axios'
 import AcountNav from '../AcountNav';

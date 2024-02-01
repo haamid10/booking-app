@@ -60,14 +60,14 @@ app.post('/places', (req, res) => {
     const{token} = req.cookies;
     const{ 
             title , address,  description,
-            photos, perks, extraInfo, checkIn,
+            addedPhotos, perks, extraInfo, checkIn,
             checkOut, maxGuests 
         } = req.body;
     jwt.verify(token ,  process.env.JWT_SECRET, {}, async (err, userData) => {
     if(err) throw err;
     const placeDoc=await Places.create({
             owner:userData.id,
-            title,address,description,photos,perks,extraInfo,checkIn,checkOut,maxGuests
+            title,address,description,photos:addedPhotos,perks,extraInfo,checkIn,checkOut,maxGuests
         });
         res.json(placeDoc);
     });
