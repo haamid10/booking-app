@@ -1,11 +1,11 @@
 import { useContext, useState} from 'react'
-import { UserContext } from './../UserContext';
+import { UserContext } from '../UserContext';
 import {  Navigate, useParams } from 'react-router-dom';
 import  axios from 'axios';
 import PlacesPage from './PlacesPage';
 import AcountNav from '../AcountNav';
 
-const AcountPage = () => {
+const ProfilePage = () => {
   const [redirect , setRedirect] = useState(null)
   const {ready,user, setUser}= useContext(UserContext);
    
@@ -50,4 +50,4 @@ const AcountPage = () => {
   )
 }
 
-export default AcountPage
+export default ProfilePage
