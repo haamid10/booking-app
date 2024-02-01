@@ -56,7 +56,7 @@ app.post('/upload',photosMIddleware.array('photos',100),(req,res)=>{
     
 })
 
-app.post('/uploads', (req, res) => {
+app.post('/places', (req, res) => {
     const{token} = req.cookies;
     const{ 
             title , address,  description,
