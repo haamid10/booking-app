@@ -1,8 +1,8 @@
-import { Link,useParams } from "react-router-dom";
-import PlacesFormPage from "./PlacesFormPage";
+import { Link } from "react-router-dom";
+// import PlacesFormPage from "./PlacesFormPage";
+import AcountNav from "../AcountNav";
 
 const PlacesPage = () => {
-  const {action} = useParams()
 
   // const linkClasses =(type =null)=> {
   //   let baseClasses = 'inline-flex gap-2 py-2 px-6 ';
@@ -15,7 +15,8 @@ const PlacesPage = () => {
 
   return (
     <div className=" w-fixed">
-    {action !=='new' && (
+      <AcountNav />
+    
       <div>
         <div className="text-center">
             <Link className="inline-flex  bg-primary  text-white py-2 px-6 rounded-full" to={'/account/Places/new'}>
@@ -27,10 +28,8 @@ const PlacesPage = () => {
         </div>
         </div>
         
-    )}
-    {action === 'new' && (
-      <PlacesFormPage/>
-    )}
+   
+ 
   </div>
         
 
