@@ -1,7 +1,19 @@
 import { Link } from "react-router-dom";
 import AcountNav from "../AcountNav";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const PlacesPage = () => {
+  const [places, setPlaces] = useState([]);
+  useEffect(() => {
+    const fetchPlaces = async () => {
+      const { data } = await axios.get("/places");
+      setPlaces(data);
+    };
+    fetchPlaces();
+  }, []);
+
+
 
 
 
