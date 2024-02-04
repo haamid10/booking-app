@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 const userRoutes= require('./Routes/userRoutes');
 const multer = require('multer')
 const fs = require('fs')
+const mongoose = require('mongoose');
 // const placeRoutes= require('./Routes/PlacesRoutes')
 const Places = require('./MODELS/places')
 
@@ -73,6 +74,23 @@ app.post('/places', (req, res) => {
     });
     }
      )
+    //  app.post('/places', (req,res) => {
+    //     mongoose.connect(process.env.DATABASE_URL);
+    //     const {token} = req.cookies;
+    //     const {
+    //       title,address,addedPhotos,description,price,
+    //       perks,extraInfo,checkIn,checkOut,maxGuests,
+    //     } = req.body;
+    //     jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData) => {
+    //       if (err) throw err;
+    //       const placeDoc = await Places.create({
+    //         owner:userData.id,price,
+    //         title,address,photos:addedPhotos,description,
+    //         perks,extraInfo,checkIn,checkOut,maxGuests,
+    //       });
+    //       res.json(placeDoc);
+    //     });
+    //   });
 
 
 
