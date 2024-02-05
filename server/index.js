@@ -74,7 +74,10 @@ app.post('/places', (req, res) => {
     });
     }
     )
-// app.get('/places', async (req, res) => {
-//     const places = await Places.find().populate('owner');
+app.get('/places', async (req, res) => {
+    const places = await Places.find();
+    res.json(places);
+})
+    
 
 app.listen(5000, () => console.log(`server running on port: http://localhost:5000`));
