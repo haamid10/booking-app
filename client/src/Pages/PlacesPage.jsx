@@ -30,18 +30,22 @@ const PlacesPage = () => {
         </div>
         <div className="mt-4">
           {places.length > 0 && places.map(place => (
-            <div key={place.id} className="flex flex-col gap-4  bg-gray-100 p-4 rounded-xl">
-              <div className=" w-32 h-32 bg-gray-200">
+            <Link to={'/account/places/'+ place._id} key={place.id} className="flex cursor-pointer  gap-4  bg-gray-100 p-4 rounded-xl">
+              <div className=" w-32 h-32 bg-gray-300 grow shrink-0">
               {place.photos.length > 0 &&(
               <img src={place.photos[0]} />
               )
               }
               </div>
-              {place.title} <br/>
+             <div  className=" grow-0 shrink">
+             <h2 className="text-xl">{place.title}</h2> 
+             <p className="text-sm mt-2 ">{ place.description}</p>
+             </div>
+            
+             
 
              
-              {place.description}
-            </div>
+            </Link>
           ))}
         </div>
         </div>
