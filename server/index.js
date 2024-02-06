@@ -75,8 +75,14 @@ app.post('/places', (req, res) => {
     }
     )
 app.get('/places', async (req, res) => {
-    const places = await Places.find();
-    res.json(places);
+    const {token} = req.cookies;
+    jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData) => {
+        if(err) throw err;
+        const {id} = userData;
+        const places = await Places.find({owner: id});
+        res.json(places);
+    })
+   
 })
     
 
