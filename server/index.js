@@ -84,6 +84,11 @@ app.get('/places', async (req, res) => {
     })
    
 })
-    
+
+app.get('/places/:id', async(req, res) => {
+    const {id} =req.params;
+    const getPlaces = await Places.findById(id);
+    res.json(getPlaces)
+})
 
 app.listen(5000, () => console.log(`server running on port: http://localhost:5000`));
