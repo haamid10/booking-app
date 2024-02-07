@@ -30,6 +30,10 @@ const PlacesFormPage = () => {
         setAddress(data.address);
         setDescription(data.description);
         setPerks(data.perks);
+        setExtraInfo(data.extraInfo);
+        setCheckIn(data.checkIn);
+        setCheckOut(data.checkOut);
+        setMaxGuests(data.maxGuests);
       
       })
 
@@ -59,9 +63,7 @@ const PlacesFormPage = () => {
 
 const saveNewPlace = async(ev) => {
     ev.preventDefault();
-   
-    await axios.post('/places', {
-      title,
+    const placeData = { title,
       address,
       addedPhotos,
       description,
@@ -69,9 +71,20 @@ const saveNewPlace = async(ev) => {
       extraInfo,
       checkIn,
       checkOut,
-      maxGuests
-    });
-    setRedirect(true);
+      maxGuests}
+
+    if(id){
+      // update 
+      await axios.put('/places', {id, ...placeData});
+      setRedirect(true);
+    }
+    else{
+      // new place
+      await axios.post('/places', {...placeData});
+      setRedirect(true);
+    }
+   
+    
     
   }
   if(redirect){
