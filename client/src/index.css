@@ -11,3 +11,6 @@ input[type="password"],input[type="email"],input[type="text"],input[type="number
 button.primary{
     @apply bg-primary p-2 w-full text-white rounded-2xl;
 }
+textarea{
+    height: 200px;
+}

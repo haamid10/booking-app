@@ -29,6 +29,7 @@ const PlacesFormPage = () => {
         setTitle(data.title);
         setAddress(data.address);
         setDescription(data.description);
+        setPerks(data.perks);
       
       })
 
@@ -56,7 +57,7 @@ const PlacesFormPage = () => {
         )
     }
 
-const addNewPlace = async(ev) => {
+const saveNewPlace = async(ev) => {
     ev.preventDefault();
    
     await axios.post('/places', {
@@ -83,7 +84,7 @@ const addNewPlace = async(ev) => {
       <AcountNav/>
         <div className="0 ">
         <h3 className='text-center font-bold text-2xl font-sans'>Add a new place:</h3>
-        <form action="" onSubmit={addNewPlace}>
+        <form action="" onSubmit={saveNewPlace}>
           {headersInput('Title','Title for your place')}
           <input value={title} onChange={ev=> setTitle(ev.target.value)} type="text" placeholder="Title" className=" p-4 my-4 border border-gray-400 rounded-lg " />
           {headersInput('Address',' Address to this place')}
