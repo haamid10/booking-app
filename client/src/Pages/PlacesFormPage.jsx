@@ -8,7 +8,7 @@ import AcountNav from '../AcountNav';
 import { useParams } from 'react-router-dom';
 const PlacesFormPage = () => {
   const {id} = useParams();
-  console.log({id});
+  // console.log({id});
     const [title, setTitle] = useState('');
     const [address, setAddress] = useState('');
     const [addedPhotos, setAddedPhotos] = useState([]);
@@ -71,7 +71,8 @@ const saveNewPlace = async(ev) => {
       extraInfo,
       checkIn,
       checkOut,
-      maxGuests}
+      maxGuests
+    }
 
     if(id){
       // update 
@@ -80,13 +81,13 @@ const saveNewPlace = async(ev) => {
     }
     else{
       // new place
-      await axios.post('/places', {...placeData});
+      await axios.post('/places', placeData);
       setRedirect(true);
     }
-   
-    
-    
-  }
+
+}
+
+  
   if(redirect){
     return <Navigate to='/account/places' />
   }
@@ -95,7 +96,7 @@ const saveNewPlace = async(ev) => {
   return (
     <div>
       <AcountNav/>
-        <div className="0 ">
+        <div className="0  mx-44">
         <h3 className='text-center font-bold text-2xl font-sans'>Add a new place:</h3>
         <form action="" onSubmit={saveNewPlace}>
           {headersInput('Title','Title for your place')}
