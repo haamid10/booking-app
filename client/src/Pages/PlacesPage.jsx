@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import AcountNav from "../AcountNav";
+import AccountNav from "../AccountNav";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -19,7 +19,7 @@ const PlacesPage = () => {
 
   return (
     <div className=" w-fixed">
-      <AcountNav />
+      <AccountNav />
       <div>
         <div className="text-center">
             <Link className="inline-flex  bg-primary  text-white py-2 px-6 rounded-full" to={'/account/Places/new'}>

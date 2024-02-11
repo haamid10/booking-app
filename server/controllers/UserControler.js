@@ -54,11 +54,7 @@ exports.login = async (req,res) => {
 }
 
 exports.profile = (req, res) => {
-    
-   
-
         const {token} = req.cookies;
-       
         if(token){
             jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData)=> {
                 if (err) throw err;

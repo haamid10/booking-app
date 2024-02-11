@@ -67,10 +67,11 @@ app.post('/places', (req, res) => {
     jwt.verify(token ,  process.env.JWT_SECRET, {}, async (err, userData) => {
     if(err) throw err;
     const placeDoc=await Places.create({
-            owner:userData.id,
+            Owner:userData._id,
             title,address,description,photos:addedPhotos,perks,extraInfo,checkIn,checkOut,maxGuests
         });
         res.json(placeDoc);
+        // console.log(placeDoc.Owner);
     });
     }
     )
@@ -81,6 +82,7 @@ app.get('/places', async (req, res) => {
         const {id} = userData;
         const places = await Places.find({owner: id});
         res.json(places);
+        
     })
    
 })
@@ -93,7 +95,7 @@ app.get('/places/:id', async(req, res) => {
 app.put('/places',async (req, res) => {
     const{token} = req.cookies;
     const{ 
-            id ,title , address,  description,
+            id,price ,title , address,  description,
             addedPhotos, perks, extraInfo, checkIn,
             checkOut, maxGuests 
         } = req.body;
@@ -101,11 +103,50 @@ app.put('/places',async (req, res) => {
     if(err) throw err;
     // const {id} = userData;
     const placeDoc = await Places.findById(id);
-    console.log(userData._id);
-    console.log(placeDoc.owner.toString());
+    // console.log(userData._id);
+    // console.log(placeDoc.Owner?);
+    if (userData._id === placeDoc.Owner?.toString()) {
+     
+                placeDoc.set({
+                  title,address,photos:addedPhotos,description,
+                  perks,extraInfo,checkIn,checkOut,maxGuests,price,
+                });
+                await placeDoc.save();
+                res.status(200).json('ok');
+              }
+              else {
+                res.status(401).json('unauthorized');
+                console.log('unauthorized');
+              }  
+        
+
 
 });
    
 })
+
+// app.put('/places', async (req,res) => {
+//     const {token} = req.cookies;
+//     const {
+//       id, title,address,addedPhotos,description,
+//       perks,extraInfo,checkIn,checkOut,maxGuests,price,
+//     } = req.body;
+//     jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData) => {
+//       if (err) throw err;
+//       const placeDoc = await Places.findById(id);
+//     //   console.log(userData._id);
+//     //     console.log(placeDoc.id);
+
+//       if (userData.id === placeDoc._id.toString()) {
+     
+//         placeDoc.set({
+//           title,address,photos:addedPhotos,description,
+//           perks,extraInfo,checkIn,checkOut,maxGuests,price,
+//         });
+//         await placeDoc.save();
+//         res.status(200).json('ok');
+//       }
+//     });
+//   });
 
 app.listen(5000, () => console.log(`server running on port: http://localhost:5000`));

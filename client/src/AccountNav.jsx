@@ -1,6 +1,6 @@
 import { Link, useLocation} from 'react-router-dom';
 
-const AcountNav = () => {
+const AccountNav = () => {
     const {pathname} = useLocation();
     let subpage = pathname.split('/')?.[2];
     if(subpage === undefined){
@@ -40,4 +40,4 @@ const AcountNav = () => {
   )
 }
 
-export default AcountNav
+export default AccountNav;

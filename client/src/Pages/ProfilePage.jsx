@@ -3,7 +3,7 @@ import { UserContext } from '../UserContext';
 import {  Navigate, useParams } from 'react-router-dom';
 import  axios from 'axios';
 import PlacesPage from './PlacesPage';
-import AcountNav from '../AcountNav';
+import AccountNav from '../AccountNav';
 
 const ProfilePage = () => {
   const [redirect , setRedirect] = useState(null)
@@ -34,7 +34,7 @@ const ProfilePage = () => {
   
     return (
     <div>
-      <AcountNav />
+      <AccountNav />
       {subpage === 'profile' && (
         <div className=' text-center max-w-lg mx-auto'>
           Logged in as {user.name}({user.email}) <br/>

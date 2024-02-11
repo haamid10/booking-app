@@ -4,7 +4,7 @@ import PhotosUploader from '../PhotosUploader';
 import {Navigate} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import axios from 'axios'
-import AcountNav from '../AcountNav';
+import AccountNav from '../AccountNav';
 import { useParams } from 'react-router-dom';
 const PlacesFormPage = () => {
   const {id} = useParams();
@@ -95,7 +95,7 @@ const saveNewPlace = async(ev) => {
     
   return (
     <div>
-      <AcountNav/>
+      <AccountNav />
         <div className="0  mx-44">
         <h3 className='text-center font-bold text-2xl font-sans'>Add a new place:</h3>
         <form action="" onSubmit={saveNewPlace}>
