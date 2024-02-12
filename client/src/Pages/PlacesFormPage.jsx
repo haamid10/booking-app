@@ -34,6 +34,7 @@ const PlacesFormPage = () => {
         setCheckIn(data.checkIn);
         setCheckOut(data.checkOut);
         setMaxGuests(data.maxGuests);
+        setAddedPhotos(data.photos);
       
       })
 
