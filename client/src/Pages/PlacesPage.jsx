@@ -35,7 +35,7 @@ const PlacesPage = () => {
               <div className=" w-32 h-32 bg-gray-300 grow shrink-0" >
 
               {place.photos.length > 0 &&(
-              <img className=" h-44 w-fit " src={`http://localhost:5000/uploads/`+ place.photos[0]}  alt=""/>
+              <img className=" object-cover h-32 " src={`http://localhost:5000/uploads/`+ place.photos[0]}  alt=""/>
               )
               }
               </div>
