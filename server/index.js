@@ -62,13 +62,13 @@ app.post('/places', (req, res) => {
     const{ 
             title , address,  description,
             addedPhotos, perks, extraInfo, checkIn,
-            checkOut, maxGuests 
+            checkOut, maxGuests,price
         } = req.body;
     jwt.verify(token ,  process.env.JWT_SECRET, {}, async (err, userData) => {
     if(err) throw err;
     const placeDoc=await Places.create({
             Owner:userData._id,
-            title,address,description,photos:addedPhotos,perks,extraInfo,checkIn,checkOut,maxGuests
+            title,address,description,photos:addedPhotos,perks,extraInfo,checkIn,checkOut,maxGuests,price
         });
         res.json(placeDoc);
         // console.log(placeDoc.Owner);

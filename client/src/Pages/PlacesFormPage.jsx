@@ -19,6 +19,7 @@ const PlacesFormPage = () => {
     const [checkOut, setCheckOut] = useState('');
     const [maxGuests, setMaxGuests] = useState(1);
     const [redirect , setRedirect] = useState(false)
+    const [price, setPrice] = useState('');
 
     useEffect(()=> {
       if(!id) {
@@ -35,6 +36,7 @@ const PlacesFormPage = () => {
         setCheckOut(data.checkOut);
         setMaxGuests(data.maxGuests);
         setAddedPhotos(data.photos);
+        setPrice(data.price);
       
       })
 
@@ -72,7 +74,8 @@ const saveNewPlace = async(ev) => {
       extraInfo,
       checkIn,
       checkOut,
-      maxGuests
+      maxGuests,
+      price
     }
 
     if(id){
@@ -104,6 +107,8 @@ const saveNewPlace = async(ev) => {
           <input value={title} onChange={ev=> setTitle(ev.target.value)} type="text" placeholder="Title" className=" p-4 my-4 border border-gray-400 rounded-lg " />
           {headersInput('Address',' Address to this place')}
           <input  value={address} onChange={ev=> setAddress(ev.target.value)} type="text" placeholder="Address" className=" p-4 my-4 border border-gray-400 rounded-lg  " />
+          {headersInput('price',' price to this place')}
+          <input  value={price} onChange={ev=> setPrice(ev.target.value)} type="number" placeholder="Address" className=" p-4 my-4 border border-gray-400 rounded-lg  " />
           {headersInput('Photos','more = photos')}
           <PhotosUploader onChange={setAddedPhotos} addedPhotos={addedPhotos}/>
           {headersInput('Description','description of the place')}
