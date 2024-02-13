@@ -7,7 +7,7 @@ const PlacesPage = () => {
   const [places, setPlaces] = useState([]);
   useEffect(() => {
     const fetchPlaces = async () => {
-      const { data } = await axios.get("/places");
+      const { data } = await axios.get("/user-places");
       setPlaces(data);
     };
     fetchPlaces();

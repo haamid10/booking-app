@@ -75,7 +75,7 @@ app.post('/places', (req, res) => {
     });
     }
     )
-app.get('/places', async (req, res) => {
+app.get('/user-places', async (req, res) => {
     const {token} = req.cookies;
     jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData) => {
         if(err) throw err;
@@ -101,10 +101,8 @@ app.put('/places',async (req, res) => {
         } = req.body;
     jwt.verify(token ,  process.env.JWT_SECRET, {}, async (err, userData) => {
     if(err) throw err;
-    // const {id} = userData;
     const placeDoc = await Places.findById(id);
-    // console.log(userData._id);
-    // console.log(placeDoc.Owner?);
+    
     if (userData._id === placeDoc.Owner?.toString()) {
      
                 placeDoc.set({
@@ -113,40 +111,13 @@ app.put('/places',async (req, res) => {
                 });
                 await placeDoc.save();
                 res.status(200).json('ok');
-              }
-              else {
-                res.status(401).json('unauthorized');
-                console.log('unauthorized');
-              }  
-        
-
-
-});
+            }
+            });
    
 })
 
-// app.put('/places', async (req,res) => {
-//     const {token} = req.cookies;
-//     const {
-//       id, title,address,addedPhotos,description,
-//       perks,extraInfo,checkIn,checkOut,maxGuests,price,
-//     } = req.body;
-//     jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData) => {
-//       if (err) throw err;
-//       const placeDoc = await Places.findById(id);
-//     //   console.log(userData._id);
-//     //     console.log(placeDoc.id);
-
-//       if (userData.id === placeDoc._id.toString()) {
-     
-//         placeDoc.set({
-//           title,address,photos:addedPhotos,description,
-//           perks,extraInfo,checkIn,checkOut,maxGuests,price,
-//         });
-//         await placeDoc.save();
-//         res.status(200).json('ok');
-//       }
-//     });
-//   });
+app.get('/places', async (req, res) => {
+    res.json(await Places.find())
+})
 
 app.listen(5000, () => console.log(`server running on port: http://localhost:5000`));
