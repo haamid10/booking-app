@@ -22,7 +22,7 @@ const IndexPage = () => {
             <h1>{place.title}</h1>
             <h1>{place.address}</h1>
             </div>
-          
+          // litle bit                                                     
 
             
          
