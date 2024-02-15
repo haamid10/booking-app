@@ -10,10 +10,10 @@ const IndexPage = () => {
   },[])
   console.log(places)
   return (
-    <div>IndexPage
+    <div className="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
       {
         places.length > 0 && places.map(place => (
-          <div className="   mt-12 flex flex-row" key={place.id}>
+          <div className=" " key={place.id}>
              
             
               {place.photos?.[0]   && (
