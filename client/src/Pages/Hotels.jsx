@@ -65,6 +65,19 @@ const Hotels = () => {
         <button onClick={()=> setShowAll(true)} className=' absolute bottom-2 right-2  shadow-lg shadow-grey-500 bg-white py-2 px-4 rounded-2xl'>Show more photos</button>
 
         </div>
+        <div className=' mt-8 gap-4 grid-cols-1 md:grid-cols-[2fr-1fr] '>
+            <div>
+                <h2 className='text-2xl'>Description</h2>
+                <p>{places.description}</p>
+            </div>
+            <div className=' grid grid-cols-2'>
+                Check-in {places.checkIn} <br/>
+                Check-Out {places.checkOut} <br/>
+                Max number of guests:{places.maxGuests} <br/>
+
+            </div>
+
+        </div>
 
     </div>
   )
