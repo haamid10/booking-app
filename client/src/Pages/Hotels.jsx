@@ -66,16 +66,20 @@ const Hotels = () => {
 
         </div>
        
-            <div className='my-4'>
+           
+            <div className='mt-8 gap-12 grid grid-cols-2 lg:grid-cols-[2fr_1fr]'>
+               
+                <div className='my-4'>
                 <h2 className='font-semibold text-2xl'>Description</h2>
                 <p>{places.description}</p>
-            </div>
-            <div className=' grid grid-cols-[2fr_1fr]'>
                 <div>
                 Check-in {places.checkIn} <br/>
                 Check-Out {places.checkOut} <br/>
                 Max number of guests:{places.maxGuests} 
                 </div>
+                </div>
+                
+                
                
             
             <div className='bg-white    shadow-xl p-4 rounded-2xl w-[400px]'>
