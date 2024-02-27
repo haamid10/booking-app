@@ -47,17 +47,17 @@ const Hotels = () => {
             <div>
                 {places.photos?.[0] &&(
                     <div>
-                        <img className='' src={'http://localhost:5000/uploads/'+ places.photos[0]} alt="" />
+                        <img onClick={() => setShowAll(true)} className='' src={'http://localhost:5000/uploads/'+ places.photos[0]} alt="" />
                     </div>
                 )}
             </div>
             <div className="grid gap-2 ">
                 {places.photos?.[1] &&(
-                        <img className='' src={'http://localhost:5000/uploads/'+ places.photos[1]} alt="" />
+                        <img onClick={() => setShowAll(true)} className='' src={'http://localhost:5000/uploads/'+ places.photos[1]} alt="" />
                 )}
             <div>
             {places.photos?.[2] &&(
-                        <img className='' src={'http://localhost:5000/uploads/'+ places.photos[2]} alt="" />
+                        <img onClick={() => setShowAll(true)} className='' src={'http://localhost:5000/uploads/'+ places.photos[2]} alt="" />
                 )}
             </div>
             </div>
