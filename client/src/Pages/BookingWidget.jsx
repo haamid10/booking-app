@@ -1,4 +1,5 @@
 import { useState } from "react"
+// import date from 'date-fns'
 const BookingWidget = ({places}) => {
     const [checkIn, setCheckIn] = useState('')
     const [checkOut, setCheckOut] = useState('')
