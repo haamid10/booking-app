@@ -1,6 +1,8 @@
-import React from 'react'
-
+import { useState } from "react"
 const BookingWidget = ({places}) => {
+    const [checkIn, setCheckIn] = useState('')
+    const [checkOut, setCheckOut] = useState('')
+    const [guests, setGuests] = useState(1)
   return (
     <div>
         <div className='mt-8 gap-12 grid grid-cols-2 lg:grid-cols-[2fr_1fr]'>
@@ -26,18 +28,18 @@ const BookingWidget = ({places}) => {
                    <div className="flex">
                        <div className='    py-3 px-4  '>
                            <label>Check in:</label>
-                           <input type="date" />
+                           <input type="date" value={checkIn} onChange={ev => setCheckIn(ev.target.value)}/>
                        </div>
                        <div className='     py-3 px-4 border-l'>
-                           <label>Check in:</label>
-                           <input type="date" />
+                           <label>Check out:</label>
+                           <input type="date" value={checkOut} onChange={ev => setCheckOut(ev.target.value)} />
                        </div>
 
                    </div>
                    <div>
                    <div className='     py-3 px-4 border-t'>
                            <label>Number of guests:</label>
-                           <input type="number" />
+                           <input type="number" value={guests} onChange={ev => setGuests(ev.target.value) }/>
                        </div>
                    </div>
                
