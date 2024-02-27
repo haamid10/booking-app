@@ -25,7 +25,7 @@ const Hotels = () => {
         return(
             <div className=' absolute bg-white inset-0 min-h-screen'>
                 <div>
-                    <button className=' fixed top-8 right-12  shadow-lg shadow-grey-500 bg-gray-300 py-2 px-4 rounded-2xl' onClick={()=>setShowAll(false)}>close Photos</button>
+                    <button className=' fixed top-8 right-12  shadow-lg shadow-grey-500 bg-gray-300 pt-2 px-4 rounded-2xl' onClick={()=>setShowAll(false)}>close Photos</button>
                 </div>
             {
                 places?.photos?.length && places.photos.map(photo => (
@@ -39,7 +39,7 @@ const Hotels = () => {
    
     // console.log(places)
   return (
-    <div className='mt-4 pt-4 bg-gray-100 h-fit -mx-8 px-8'>
+    <div className='mt-4 pt-4 bg-gray-50 h-fit -mx-8 px-8'>
         <h1 className=' text-3xl'> {places.title}</h1>
         <a className='my-2 block underline font-semibold' target='_blank' href={'https://maps.google.com/?q='+ places.address}>{places.address}</a>
         <div className='relative'>
@@ -66,7 +66,13 @@ const Hotels = () => {
         <button onClick={()=> setShowAll(true)} className=' absolute bottom-2 right-2  shadow-lg shadow-grey-500 bg-white py-2 px-4 rounded-2xl'>Show more photos</button>
 
         </div>
+        <div>
         <BookingWidget places={places}/>
+        </div>
+        <div className=' bg-white -mx-8 px-8 pt-6 border-t'>
+            <h2 className=' font-semibold text-2xl'>  Extra Info</h2>
+        <div className='-mx-8  px-8 shadow leading-5 py-4 w-[900px]  rounded-2xl my-4  text-sm text-gray-700 '>{places.extraInfo}</div>
+        </div>
 
         </div>
 
