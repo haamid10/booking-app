@@ -1,5 +1,5 @@
 import { useState } from "react"
-// import date from 'date-fns'
+import date, { differenceInBusinessDays, differenceInCalendarDays } from 'date-fns'
 const BookingWidget = ({places}) => {
     const [checkIn, setCheckIn] = useState('')
     const [checkOut, setCheckOut] = useState('')
@@ -46,7 +46,16 @@ const BookingWidget = ({places}) => {
                
                </div>
               
-               <button className='primary mt-2' >Book this place </button>
+            <button className='primary mt-2' >
+
+                Book this place
+                {checkIn && checkOut &&(
+                    <>
+                    <span>{differenceInBusinessDays( new date(checkIn), new date(checkOut))}</span>
+                    </>
+                )}
+                
+            </button>
 
            </div>
            </div>
