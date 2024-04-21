@@ -55,7 +55,7 @@ const BookingWidget = ({places}) => {
 
                 Book this place
                 {numberOfNights > 0 &&(
-                    <span>{numberOfNights * places.price}</span>
+                    <span> ${numberOfNights * places.price}</span>
                 )}
                 
             </button>
