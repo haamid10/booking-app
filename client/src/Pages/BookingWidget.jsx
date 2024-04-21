@@ -24,10 +24,7 @@ const BookingWidget = ({places}) => {
                Max number of guests:{places.maxGuests} 
                </div>
                </div>
-               
-               
-              
-           
+        
            <div className='bg-white    shadow-xl p-4 rounded-2xl w-[400px]'>
                <div className='text-2xl text-center'>
                    Price: ${places.price}  / Per night
@@ -52,7 +49,7 @@ const BookingWidget = ({places}) => {
                     {numberOfNights >0 && (
                         <div className='     py-3 px-4 border-t'>
                         <label>Enter Your Full-name:</label>
-                        <input type="number" value={name} onChange={ev => setName(ev.target.value) }/>
+                        <input type="text" value={name} onChange={ev => setName(ev.target.value) }/>
                         <label>Enter Your Phone Number :</label>
                         <input type="tele" value={mobile} onChange={ev => setMobile(ev.target.value) }/>
                     </div>
