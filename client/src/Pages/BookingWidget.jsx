@@ -1,9 +1,14 @@
 import { useState } from "react"
-import date, { differenceInBusinessDays, differenceInCalendarDays } from 'date-fns'
+import {differenceInCalendarDays} from 'date-fns'
 const BookingWidget = ({places}) => {
     const [checkIn, setCheckIn] = useState('')
     const [checkOut, setCheckOut] = useState('')
     const [guests, setGuests] = useState(1)
+
+    let numberOfNights = 0;
+    if(checkIn && checkOut) {
+        numberOfNights = differenceInCalendarDays(new date(checkIn),new date(checkOut));
+    }
   return (
     <div>
         <div className='mt-8 gap-12 grid grid-cols-2 lg:grid-cols-[2fr_1fr]'>
@@ -49,10 +54,8 @@ const BookingWidget = ({places}) => {
             <button className='primary mt-2' >
 
                 Book this place
-                {checkIn && checkOut &&(
-                    <>
-                    <span>{differenceInBusinessDays( new date(checkIn), new date(checkOut))}</span>
-                    </>
+                {numberOfNights > 0 &&(
+                    <span>{numberOfNights * places.price}</span>
                 )}
                 
             </button>
