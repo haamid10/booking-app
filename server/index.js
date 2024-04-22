@@ -120,4 +120,9 @@ app.get('/places', async (req, res) => {
     res.json(await Places.find())
 })
 
+app.post('/booking', (req, res)=> {
+    const { place, checkIn, checkOut, numberofGuests,name , phone}= req.body;
+    
+})
+
 app.listen(5000, () => console.log(`server running on port: http://localhost:5000`));
