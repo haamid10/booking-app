@@ -121,13 +121,19 @@ app.get('/places', async (req, res) => {
     res.json(await Places.find())
 })
 
-app.post('/booking', async (req, res)=> {
+app.post('/booking',  (req, res)=> {
     const { place, checkIn, checkOut, numberofGuests,name , phone}= req.body;
-    const booking = await Booking.create({place, checkIn, checkOut, numberofGuests,name , phone});
+    Booking.create({
+        place, checkIn, checkOut, numberofGuests,name , phone
+    }).then((doc)=> { 
+        res.json(doc);
+    }).catch((err) => {
+        throw(err);})
+    });
 
-    res.json(booking);
+   
 
     
-})
+
 
 app.listen(5000, () => console.log(`server running on port: http://localhost:5000`));
