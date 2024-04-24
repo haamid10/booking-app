@@ -7,6 +7,7 @@ const BookingWidget = ({places}) => {
     const [guests, setGuests] = useState(1)
     const [name , setName] = useState("")
     const [phone , setPhone] = useState("")
+    const [redirect, setRedirect]= useState(false)
 
     let numberOfNights = 0;
     if(checkIn && checkOut) {
@@ -14,10 +15,12 @@ const BookingWidget = ({places}) => {
     }
 
     const bookThisPlace = async () => {
-        const data = {checkIn, checkOut, guests, name, phone,
-        place: places._id,  price:numberOfNights * places.price}
+        // const data = {checkIn, checkOut, guests, name, phone,
+        // place: places._id,  price:numberOfNights * places.price}
         await axios.post('/booking',{checkIn, checkOut, guests, name, phone,
-            place: places._id,  price:numberOfNights * places.price})
+            place: places._id,  price:numberOfNights * places.price
+        });
+        // const bookingId = response.at
 
     }
   return (
