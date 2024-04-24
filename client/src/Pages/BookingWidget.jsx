@@ -1,15 +1,24 @@
 import { useState } from "react"
 import {differenceInCalendarDays} from 'date-fns'
+import axios from 'axios'
 const BookingWidget = ({places}) => {
     const [checkIn, setCheckIn] = useState('')
     const [checkOut, setCheckOut] = useState('')
     const [guests, setGuests] = useState(1)
     const [name , setName] = useState("")
-    const [mobile , setMobile] = useState("")
+    const [phone , setPhone] = useState("")
 
     let numberOfNights = 0;
     if(checkIn && checkOut) {
         numberOfNights = differenceInCalendarDays(new Date(checkOut),new Date(checkIn));
+    }
+
+    const bookThisPlace = async () => {
+        const data = {checkIn, checkOut, guests, name, phone,
+        place: places._id,  price:numberOfNights * places.price}
+        await axios.post('/booking',{checkIn, checkOut, guests, name, phone,
+            place: places._id,  price:numberOfNights * places.price})
+
     }
   return (
     <div>
@@ -51,7 +60,7 @@ const BookingWidget = ({places}) => {
                         <label>Enter Your Full-name:</label>
                         <input type="text" value={name} onChange={ev => setName(ev.target.value) }/>
                         <label>Enter Your Phone Number :</label>
-                        <input type="tele" value={mobile} onChange={ev => setMobile(ev.target.value) }/>
+                        <input type="tele" value={phone} onChange={ev => setPhone(ev.target.value) }/>
                     </div>
 
                     )}
@@ -59,7 +68,7 @@ const BookingWidget = ({places}) => {
                    </div>
                </div>
               
-            <button className='primary mt-2' >
+            <button onClick={bookThisPlace} className='primary mt-2' >
 
                 Book this place
                 {numberOfNights > 0 &&(

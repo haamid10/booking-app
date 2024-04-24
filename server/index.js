@@ -11,6 +11,7 @@ const fs = require('fs')
 const mongoose = require('mongoose');
 // const placeRoutes= require('./Routes/PlacesRoutes')
 const Places = require('./MODELS/places')
+const Booking = require('./MODELS/Booking')
 
 // const path= require('path')
 require('./connection');
@@ -120,8 +121,12 @@ app.get('/places', async (req, res) => {
     res.json(await Places.find())
 })
 
-app.post('/booking', (req, res)=> {
+app.post('/booking', async (req, res)=> {
     const { place, checkIn, checkOut, numberofGuests,name , phone}= req.body;
+    const booking = await Booking.create({place, checkIn, checkOut, numberofGuests,name , phone});
+
+    res.json(booking);
+
     
 })
 
