@@ -131,6 +131,20 @@ app.post('/booking',  (req, res)=> {
         throw(err);})
     });
 
+    function getUserData(req){
+        return new Promise((resolve, reject) => {
+            // const {token} = req.cookies;
+            jwt.verify(req.cookies.token, process.env.JWT_SECRET, {}, async (err, userData) => {
+                if(err) reject(err);
+                resolve(userData);
+            })
+        })  
+    }
+
+app.get('/bookings', async (req, res) => {
+   const userData = await  getUserData(req)
+})
+
    
 
     

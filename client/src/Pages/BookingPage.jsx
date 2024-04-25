@@ -1,8 +1,14 @@
 import React from 'react'
+import AccountNav from '../AccountNav'
 
 const BookingPage = () => {
   return (
-    <div>my booking are here </div>
+    <div>
+      <AccountNav/>
+      <div>
+        siuu
+      </div>
+    </div>
   )
 }
 
