@@ -8,6 +8,7 @@ const bookingSchema = new mongoose.Schema({
     checkOut:{type:Date, required:true},
     name:{type:String, required:true},  
     phone:{type:String, required:true},
+    price: Number,
 });
 
 const BookingModel = mongoose.model('Booking', bookingSchema);
