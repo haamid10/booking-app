@@ -6,7 +6,6 @@ const BookingPage = () => {
     <div>
       <AccountNav/>
       <div>
-        siuu
       </div>
     </div>
   )
