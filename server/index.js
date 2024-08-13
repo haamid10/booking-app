@@ -29,17 +29,15 @@ app.use(cors({
 // Utility function to get user data from JWT
 function getUserData(req) {
     return new Promise((resolve, reject) => {
-        const token = req.cookies.token; // Ensure token is present in cookies
-
+        const token = req.cookies.token; 
         if (!token) {
             return reject(new Error('No token provided'));
         }
-
         jwt.verify(token, process.env.JWT_SECRET, (err, userData) => {
             if (err) {
-                return reject(err); // Reject promise with error
+                return reject(err); 
             }
-            resolve(userData); // Resolve promise with decoded user data
+            resolve(userData); 
         });
     });
 }
