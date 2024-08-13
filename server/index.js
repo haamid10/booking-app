@@ -202,7 +202,7 @@ app.post('/booking', async (req, res)=> {
 app.get('/bookings', async (req, res) => {
     try {
         const userData = await getUserData(req);
-        const bookings = await Booking.find({ user: userData._id });
+        const bookings = await Booking.find({ user: userData._id }).populate('place');
         res.json(bookings);
     } catch (err) {
         res.status(500).json({ error: 'Failed to retrieve bookings' });
