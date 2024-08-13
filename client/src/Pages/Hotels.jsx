@@ -11,8 +11,8 @@ const Hotels = () => {
             return  
         }
 
-        axios.get('/places/'+id).then((responce) => {
-            setPlaces(responce.data)
+        axios.get('/places/'+id).then((response) => {
+            setPlaces(response.data)
         })
 
 

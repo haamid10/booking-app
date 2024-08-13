@@ -3,7 +3,7 @@ const { checkout } = require('../Routes/userRoutes');
 
 const bookingSchema = new mongoose.Schema({
     place:{type:mongoose.Schema.Types.ObjectId, ref:'Place'},
-    uaername:{type:mongoose.Schema.Types.ObjectId},
+    uaername:{type:mongoose.Schema.Types.ObjectId, required: true},
     checkIn:{type:Date, required:true},
     checkOut:{type:Date, required:true},
     name:{type:String, required:true},  

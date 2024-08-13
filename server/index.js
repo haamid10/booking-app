@@ -30,15 +30,6 @@ app.use(cors({
 app.use('/', userRoutes)
 // app.use('/', placeRoutes)
 
-function getUserData(req){
-    return new Promise((resolve, reject) => {
-        // const {token} = req.cookies;
-        jwt.verify(req.cookies.token, process.env.JWT_SECRET, {}, async (err, userData) => {
-            if(err) reject(err);
-            resolve(userData);
-        })
-    })  
-}
 // console.log({__dirname})
 app.post('/upload-by-link' , async (req,res) => {
     const {link} = req.body;
@@ -134,7 +125,7 @@ app.post('/booking', async (req, res)=> {
     const { place, checkIn, checkOut, numberofGuests,name , phone, price}= req.body;
     Booking.create({
         place, checkIn, checkOut, numberofGuests,name , phone,price,
-        user: userData.id
+        user: userData.id,
     }).then((doc)=> { 
         res.json(doc);
     }).catch((err) => {
@@ -143,6 +134,15 @@ app.post('/booking', async (req, res)=> {
 
  
 
+function getUserData(req){
+    return new Promise((resolve, reject) => {
+        // const {token} = req.cookies;
+        jwt.verify(req.cookies.token, process.env.JWT_SECRET, {}, async (err, userData) => {
+            if(err) reject(err);
+            resolve(userData);
+        })
+    })  
+}
 app.get('/bookings', async (req, res) => {
    const userData = await  getUserData(req);
    res.json(await Booking.find({user: userData.id}))
