@@ -42,6 +42,9 @@ function getUserData(req) {
     });
 }
 
+app.use('/', userRoutes)
+
+
 // Routes
 app.post('/upload-by-link', async (req, res) => {
     try {
@@ -56,7 +59,6 @@ app.post('/upload-by-link', async (req, res) => {
         res.status(500).json({ error: 'Failed to download image' });
     }
 });
-app.use('/', userRoutes)
 
 const photosMiddleware = multer({ dest: 'uploads' });
 app.post('/upload', photosMiddleware.array('photos', 100), (req, res) => {
